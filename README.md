@@ -6,7 +6,7 @@ Features
 - Force shutdown command
   - Useful if the server is frozen / unresponsive
   
-- Chat commands
+Chat commands
   - .worldreset
   - .backup
   - .forcestop
