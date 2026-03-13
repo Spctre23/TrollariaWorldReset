@@ -7,6 +7,6 @@ Features
   - Useful if the server is frozen / unresponsive
   
 Chat commands
-  - .worldreset
-  - .backup
-  - .forcestop
+  - /worldreset
+  - /backup
+  - /forcestop
