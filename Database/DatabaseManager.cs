@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using Terraria;
 using TShockAPI;
 using TShockAPI.DB;
+using TShockAPI.DB.Queries;
 
 namespace WorldReset
 {
@@ -15,7 +16,7 @@ namespace WorldReset
         {
             _db = db;
 
-            var sqlCreator = new SqlTableCreator(db, new SqliteQueryCreator());
+            var sqlCreator = new SqlTableCreator(db, new SqliteQueryBuilder());
 
             // Table 1
             sqlCreator.EnsureTableStructure(new SqlTable("TableName",

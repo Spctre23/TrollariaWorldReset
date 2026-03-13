@@ -8,8 +8,8 @@ using TShockAPI.Configuration;
 using Terraria.DataStructures;
 using TShockAPI.Hooks;
 using IL.OTAPI;
-using IL.Terraria.ID;
 using TShockAPI.DB;
+using Terraria.ID;
 
 namespace WorldReset
 {
@@ -49,7 +49,7 @@ namespace WorldReset
 
         private void OnServerStarted(EventArgs args)
         {
-            Main.GameMode = GameModeData.MasterMode.Id;
+            Main.GameMode = GameModeID.Master;
 
             TShock.Regions.AddRegion(Main.spawnTileX, Main.spawnTileY, 2, 1, "spawn", "Spctre", Main.worldID.ToString());
             TShock.Regions.GetRegionByName("spawn").DisableBuild = true;
