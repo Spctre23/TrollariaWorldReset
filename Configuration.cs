@@ -8,7 +8,6 @@ namespace WorldReset
     public class Configuration
     {
         public static string ConfigPath = Path.Combine(TShock.SavePath, "worldreset.json");
-        public string worldFilePath = "C:\\Users\\Evan\\Desktop\\TSHOCK_SERVER\\tshock\\Worlds\\test.wld";
         public long secondsUntilKillProcess = 5;
 
         public static Configuration Reload()
@@ -25,7 +24,7 @@ namespace WorldReset
                 c = new Configuration();
                 File.WriteAllText(ConfigPath, JsonConvert.SerializeObject(c, Formatting.Indented));
             }
-            
+
             return c;
         }
         

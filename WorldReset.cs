@@ -3,27 +3,20 @@ using Terraria;
 using TerrariaApi.Server;
 using Microsoft.Data.Sqlite;
 using System.Diagnostics;
-using System.Drawing;
-using TShockAPI.Configuration;
-using Terraria.DataStructures;
-using TShockAPI.Hooks;
-using IL.OTAPI;
-using TShockAPI.DB;
 using Terraria.ID;
 
 namespace WorldReset
 {
     [ApiVersion(2, 1)]
-    public class WorldReset : TerrariaPlugin
+    public class WorldReset(Main game) : TerrariaPlugin(game)
     {
         public override string Name => "WorldReset";
         public override string Author => "Spctre";
-        public override string Description => "Adds a command to reset the world";
-        public override Version Version => new Version(1, 0, 0);
-        public WorldReset(Main game) : base(game) { }
+        public override string Description => "Adds commands to reset and backup the world";
+        public override Version Version => new(1, 0, 0);
 
         public static Configuration Config = Configuration.Reload();
-        public static DatabaseManager DBManager = new DatabaseManager(new SqliteConnection("Data Source=" + DatabaseManager.DatabasePath));
+        public static DatabaseManager DBManager = new(new SqliteConnection("Data Source=" + DatabaseManager.DatabasePath));
 
         public override void Initialize()
         {
@@ -78,7 +71,7 @@ namespace WorldReset
 
                 Thread.Sleep(3000);
 
-                File.Delete(Config.worldFilePath);
+                File.Delete(Main.worldPathName);
                 Console.WriteLine("\nDeleting world...");
 
                 Thread.Sleep(2000);
@@ -122,7 +115,7 @@ namespace WorldReset
         private void BackupWorld()
         {
             TShock.Log.ConsoleInfo("Backing up world...");
-            File.Copy(Config.worldFilePath, $"{Config.worldFilePath} {DateTime.Now.Month}-{DateTime.Now.Day}-{DateTime.Now.Year} {DateTime.Now.Hour}.{DateTime.Now.Minute}.wld", true);
+            File.Copy(Main.worldPathName, $"{Main.worldPathName} {DateTime.Now.Month}-{DateTime.Now.Day}-{DateTime.Now.Year} {DateTime.Now.Hour}.{DateTime.Now.Minute}.wld", true);
         }
 
         private void ReloadConfig(CommandArgs args)
