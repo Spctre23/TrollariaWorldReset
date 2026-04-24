@@ -1,4 +1,4 @@
-A world reset and backup plugin for the Trollaria terraria anarchy server
+A world reset and backup plugin for the Trollaria anarchy server for Terraria
 
 Features
 - Easy world resetting
